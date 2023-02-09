@@ -32,5 +32,6 @@ object Form1: TForm1
     Height = 25
     Caption = 'Btn1'
     TabOrder = 2
+    OnClick = Btn1Click
   end
 end
