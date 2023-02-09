@@ -11,6 +11,7 @@ type
     Edt1: TEdit;
     Edt2: TEdit;
     Btn1: TButton;
+    procedure Btn1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -23,5 +24,10 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TForm1.Btn1Click(Sender: TObject);
+begin
+  ShowMessage('Hello World');
+end;
 
 end.
