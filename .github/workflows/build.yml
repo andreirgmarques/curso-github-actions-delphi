@@ -12,3 +12,57 @@ jobs:
 
       - name: Teste unit project
         run: .\build.bat src\application CursoGitHubActions.dproj
+  
+  # test:
+  #   runs-on: [self-hosted, Windows, X64]
+  #   steps:
+  #     - uses: actions/checkout@v2
+
+  #     - name: Test unit project
+  #       run: .\build.bat test GitActionLoginTest.dproj
+
+  # build:
+  #   needs: test
+  #   runs-on: [self-hosted, Windows, X64]
+  #   steps:
+  #     - uses: actions/checkout@v2
+ 
+  #     - name: Build project master
+  #       run: .\build.bat .\src\application GitActionLogin.dproj
+
+  #     - name: Compact archive
+  #       run: Compress-Archive -Path src\application\Win32\Debug\GitActionLogin.exe -DestinationPath .\GitActionLogin.zip
+
+  #     - name: Create configuration AWS
+  #       run: |
+  #         cd .\src\application\config
+  #         boss i
+  #         ..\..\..\build.bat . config.dproj
+  #         cd Win32\Debug
+  #         .\config.exe ${{secrets.AWS_ACCESS_KEY_ID}} ${{secrets.AWS_SECRET_ACCESS_KEY}} ${{secrets.AWS_DEFAULT_REGION}}
+  #         cd ..\..\
+  #         Compress-Archive -Path .\ConfigCache.lc4 -DestinationPath ..\..\..\GitActionLogin.zip -Update
+  #     - uses: actions/upload-artifact@v2
+  #       with:
+  #         name: build
+  #         path: .\GitActionLogin.zip
+
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Configure AWS Credentials
+  #       uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+
+  #     - name: Downloads build folder
+  #       uses: actions/download-artifact@v2
+  #       with:
+  #         name: build
+  #         path: production
+
+  #     - name: Deploy AWS S3
+  #       run: aws s3 sync ./production s3://passaportfebrary  
