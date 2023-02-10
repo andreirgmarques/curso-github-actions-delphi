@@ -27,7 +27,7 @@ object Form1: TForm1
   end
   object Btn1: TButton
     Left = 48
-    Top = 96
+    Top = 98
     Width = 75
     Height = 25
     Caption = 'Btn1'
